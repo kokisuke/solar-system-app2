@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+    overflow: hidden; /* スクロールバーを非表示にする */
+    background-color: #000;
+}
+
+canvas {
+    display: block; /* canvas要素のデフォルトのマージンをなくす */
+}
