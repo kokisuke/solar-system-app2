@@ -37,7 +37,7 @@ scene.add(pointLight);
 // 星空 (パーティクルで生成)
 const starGeometry = new THREE.BufferGeometry();
 const starVertices = [];
-const clearZoneRadius = 700; // 太陽系の周辺から星を消す半径
+const clearZoneRadius = 1000; // 太陽系の周辺から星を消す半径
 const maxStarDistance = 1000; // 星の最大生成距離
 
 for (let i = 0; i < 10000; i++) {
