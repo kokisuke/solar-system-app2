@@ -10,7 +10,7 @@ const sunPosition = new THREE.Vector3(0, 0, 0);
 // --- 初期設定 ---
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-camera.position.set(0, 80, 200);
+camera.position.set(0, 200, 500);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -37,8 +37,8 @@ scene.add(pointLight);
 // 星空 (パーティクルで生成)
 const starGeometry = new THREE.BufferGeometry();
 const starVertices = [];
-const clearZoneRadius = 1000; // 太陽系の周辺から星を消す半径
-const maxStarDistance = 1000; // 星の最大生成距離
+const clearZoneRadius = 1300; // 太陽系の周辺から星を消す半径 (海王星の距離より大きく)
+const maxStarDistance = 2000; // 星の最大生成距離
 
 for (let i = 0; i < 10000; i++) {
     let x, y, z, distance;
@@ -61,14 +61,14 @@ const sun = new THREE.Mesh(sunGeometry, sunMaterial);
 scene.add(sun);
 
 const planetsData = [
-    { name: 'Mercury', color: 0xff00ff, radius: 0.38, distance: 7.8, speed: 0.0416 }, // マゼンタ
-    { name: 'Venus', color: 0x00ffff, radius: 0.95, distance: 14.4, speed: 0.0161 }, // シアン
-    { name: 'Earth', color: 0x00ff00, radius: 1, distance: 20, speed: 0.01 }, // ネオングリーン
-    { name: 'Mars', color: 0xff0000, radius: 0.53, distance: 30.4, speed: 0.0053 }, // ネオンレッド
-    { name: 'Jupiter', color: 0xffff00, radius: 4, distance: 104, speed: 0.00084 }, // ネオンイエロー
-    { name: 'Saturn', color: 0xffa500, radius: 3.5, distance: 191.6, speed: 0.00034, hasRing: true }, // ネオンオレンジ
-    { name: 'Uranus', color: 0x00aaff, radius: 2, distance: 384.6, speed: 0.000119 }, // ネオンブルー
-    { name: 'Neptune', color: 0x800080, radius: 1.9, distance: 602, speed: 0.00006 }, // パープル
+    { name: 'Mercury', color: 0xff00ff, radius: 0.38, distance: 15.6, speed: 0.0416 }, // マゼンタ (0.39 AU * 40)
+    { name: 'Venus', color: 0x00ffff, radius: 0.95, distance: 28.8, speed: 0.0161 }, // シアン (0.72 AU * 40)
+    { name: 'Earth', color: 0x00ff00, radius: 1, distance: 40, speed: 0.01 }, // ネオングリーン (1.00 AU * 40)
+    { name: 'Mars', color: 0xff0000, radius: 0.53, distance: 60.8, speed: 0.0053 }, // ネオンレッド (1.52 AU * 40)
+    { name: 'Jupiter', color: 0xffff00, radius: 4, distance: 208, speed: 0.00084 }, // ネオンイエロー (5.20 AU * 40)
+    { name: 'Saturn', color: 0xffa500, radius: 3.5, distance: 383.2, speed: 0.00034, hasRing: true }, // ネオンオレンジ (9.58 AU * 40)
+    { name: 'Uranus', color: 0x00aaff, radius: 2, distance: 769.2, speed: 0.000119 }, // ネオンブルー (19.23 AU * 40)
+    { name: 'Neptune', color: 0x800080, radius: 1.9, distance: 1204, speed: 0.00006 }, // パープル (30.10 AU * 40)
 ];
 
 const planets = [];
